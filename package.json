@@ -1,0 +1,22 @@
+{
+  "name": "npm-demo",
+  "version": "1.0.0",
+  "description": "NPM Demo Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "demo",
+    "npm"
+  ],
+  "author": "jaewoo@canvasslabs.com",
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.2.0",
+    "backbone": "^0.2.0",
+    "ejs": "^2.4.2",
+    "js-yaml": "^1.0.1",
+    "qs": "^0.6.0"
+  }
+}
