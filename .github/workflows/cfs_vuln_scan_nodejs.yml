@@ -53,8 +53,8 @@ jobs:
         # Install nodejs 12.x
         #sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
         #sudo apt-get install -y nodejs
-        sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v12.1.0-linux-x64.tar.xz
-        sudo xz -d node-v12.1.0-linux-x64.tar.xz
+        sudo curl -LO https://nodejs.org/dist/v18.0.0/node-v12.1.0-linux-x64.tar.gz
+        sudo gzip -d node-v12.1.0-linux-x64.tar.gz
         sudo tar -xvf node-v12.1.0-linux-x64.tar
         sudo cp -r node-v12.1.0-linux-x64/{bin,include,lib,share} /usr/
         sudo curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
