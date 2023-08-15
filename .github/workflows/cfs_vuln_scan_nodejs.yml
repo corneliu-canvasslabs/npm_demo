@@ -49,7 +49,8 @@ jobs:
     - run: export LANG=C.UTF-8
     - run: sudo apt install -y python3.8 python3.8-distutils python3-pip virtualenv 
     - run: sudo python3.8 -m pip install --upgrade pip
-    - run: |
+    - name: "Install NodeJS to get NPM"
+      run: |
         # Install nodejs 12.x
         #sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
         #sudo apt-get install -y nodejs
@@ -62,9 +63,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y yarn
     - run: |
+        which npm
         node --version
         npm --version
-    - run: |
+    - name: "Install CanvassForSecurity (CFS)"
+      run: |
         curl -o cfs.zip https://rivera.canvasslabs.com:5000/canvass_for_security/client/download/linux
         unzip cfs.zip
         rm cfs.zip
@@ -72,11 +75,13 @@ jobs:
       env:
         CL_API_TOKEN: ${{ secrets.CL_API_TOKEN }}
       run: ./CanvassForSecurity version
-    - run: | 
+    - name: "Install ORT"
+      run: | 
         curl -o ort_binaries_only.zip https://rivera.canvasslabs.com:5000/client/download/ort
         unzip ort_binaries_only.zip
         rm ort_binaries_only.zip
-    - run: |
+    - name: "Run ORT to generate project dependency list"
+      run: |
         virtualenv --python=python3.8 venv
         source venv/bin/activate
         cd ./ort
@@ -87,7 +92,7 @@ jobs:
         cd ..
         # set up your canvasslabs's credential using pipeline's variables. See the Getting Started guide.
         # Submit source code and analyzer results to LiAnORT, including the security tool. If you are not using this tool, comment out the below line.
-    - name: "CFS security scan"
+    - name: "Run CanvassForSecurity (CFS) on project dependencies"
       env:
         CL_API_TOKEN: ${{ secrets.CL_API_TOKEN }}
       run: ./CanvassForSecurity scan ./analyzer_results/analyzer-result.yml
