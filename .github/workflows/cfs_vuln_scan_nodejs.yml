@@ -62,6 +62,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y yarn
     - run: |
+        node --version
+        npm --version
+    - run: |
         curl -o cfs.zip https://rivera.canvasslabs.com:5000/canvass_for_security/client/download/linux
         unzip cfs.zip
         rm cfs.zip
