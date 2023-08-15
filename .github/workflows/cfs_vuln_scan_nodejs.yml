@@ -56,8 +56,9 @@ jobs:
         #sudo apt-get install -y nodejs
         sudo curl -LO https://nodejs.org/dist/v12.1.0/node-v12.1.0-linux-x64.tar.gz
         sudo gzip -d node-v12.1.0-linux-x64.tar.gz
-        sudo tar -xvf node-v12.1.0-linux-x64.tar
+        sudo tar -xf node-v12.1.0-linux-x64.tar
         sudo cp -r node-v12.1.0-linux-x64/{bin,include,lib,share} /usr/
+        sudo ln -s /usr/bin/npm /usr/local/bin/npm
         sudo curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
         sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
         sudo apt-get update
